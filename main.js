@@ -1,19 +1,20 @@
 //first btn
 
 const plusBtn = document.getElementById('plus-btn').addEventListener('click',()=>{
-    increaseProductPrice('currentQuantity'); 
+    increaseProductPrice('currentQuantity','currentPrice',1200); 
+
 });
 const minusBtn = document.getElementById('minus-btn').addEventListener('click',()=>{
-    decreaseProductPrice('currentQuantity'); 
+    decreaseProductPrice('currentQuantity','currentPrice',1200); 
 });
 
 // second btn
 
 const plusBtn2 = document.getElementById('plus-btn2').addEventListener('click',()=>{
-    increaseProductPrice('currentQuantity2'); 
+    increaseProductPrice('currentQuantity2','currentPrice2',100); 
 });
 const minusBtn2 = document.getElementById('minus-btn2').addEventListener('click',()=>{
-    decreaseProductPrice('currentQuantity2'); 
+    decreaseProductPrice('currentQuantity2','currentPrice2',100); 
 });
 
 
@@ -21,19 +22,23 @@ const minusBtn2 = document.getElementById('minus-btn2').addEventListener('click'
 
 //increase value function
 
-function increaseProductPrice(currentQuantity){
+function increaseProductPrice(currentQuantity,currentPrice,individualPrice){
     let currentValue = document.getElementById(currentQuantity).value;
     let currentQuantityNum = parseFloat(currentValue);
     let increaseQuantityNum = currentQuantityNum  + 1;
     let currentTotalQuantity = document.getElementById(currentQuantity).value =increaseQuantityNum;
 
-    return currentTotalQuantity ;
-}
+
+    let currentPriceValue = document.getElementById(currentPrice).innerText;
+    let currentPriceValueNum = parseFloat(currentPriceValue);
+    let totalPrice = individualPrice * increaseQuantityNum;
+    let currentTotalPrice = document.getElementById(currentPrice).innerText = totalPrice;
+ }
 
 
 // //decrease value function
 
-function decreaseProductPrice(currentQuantity){
+function decreaseProductPrice(currentQuantity,currentPrice,individualPrice){
     let currentValue = document.getElementById(currentQuantity).value;
 
     if(currentValue <=1){
@@ -44,8 +49,13 @@ function decreaseProductPrice(currentQuantity){
         let currentQuantityNum = parseFloat(currentValue);
         let decreaseQuantityNum = currentQuantityNum  - 1;
         let currentTotalQuantity = document.getElementById(currentQuantity).value =decreaseQuantityNum;
+
+
+        let currentPriceValue = document.getElementById(currentPrice).innerText;
+        let currentPriceValueNum = parseFloat(currentPriceValue);
+        let totalPrice = individualPrice * decreaseQuantityNum;
+        let currentTotalPrice = document.getElementById(currentPrice).innerText = totalPrice;
     
-        return currentTotalQuantity ;
     }
 
 }
